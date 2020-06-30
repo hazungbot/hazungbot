@@ -38,18 +38,18 @@ client.on('message', (message) => {
     return message.reply('https://discord.gg/Z3samZe');
   }
 
-  if(message.content == '!si') {
+  if(message.content == '!봇상태') {
     let embed = new Discord.RichEmbed()
     let img = 'https://cdn.discordapp.com/attachments/727157966855471234/727358568793374730/7b60da1b4cc7a645.jpg';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
-    embed.setColor('#186de6')
+    embed.setColor('#ffffff')
     embed.setAuthor('현재 서버의 정보 by 하정봇', img)
     embed.setFooter(`하정봇`)
     embed.addBlankField()
     embed.addField('RAM 사용량',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
     embed.addField('업타임', `${duration}`, true);
     embed.addField('현재인원',         `${client.users.size.toLocaleString()}`, true);
-    embed.addField('하정봇을 사용중인 서버',       `${client.guilds.size.toLocaleString()}`, true);
+    embed.addField('서버수',       `${client.guilds.size.toLocaleString()}`, true);
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
     embed.addField('Discord.js',   `v${Discord.version}`, true);
     embed.addField('Node',         `${process.version}`, true);
@@ -69,12 +69,12 @@ client.on('message', (message) => {
     message.channel.send(embed);
   }
 
-  if(message.content == 'embed') {
-    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+  if(message.content == '!하정봇') {
+    let img = 'https://cdn.discordapp.com/attachments/727157966855471234/727358568793374730/7b60da1b4cc7a645.jpg';
     let embed = new Discord.RichEmbed()
-      .setTitle('타이틀')
-      .setURL('http://www.naver.com')
-      .setAuthor('나긋해', img, 'http://www.naver.com')
+      .setTitle('카톡방')
+      .setURL('https://open.kakao.com/o/g9wiQj1')
+      .setAuthor('하정봇', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
       .addField('Inline field title', 'Some value here')
@@ -94,6 +94,7 @@ client.on('message', (message) => {
       {name: '!하정봇', desc: '하정봇의 정보가 나옵니다'},
       {name: '!전체공지2', desc: 'dm으로 전체 공지 발송'},
       {name: '!청소', desc: '채팅방을 청소합니다'},
+      {name: '!봇상태', desc: '봇 상태를 알려줍니다'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
@@ -139,7 +140,7 @@ client.on('message', (message) => {
     if(message.member != null) { // 채널에서 공지 쓸 때
       let contents = message.content.slice('!공지'.length);
       let embed = new Discord.RichEmbed()
-        .setAuthor('공지 of 하정봇')
+        .setAuthor('전체dm 공지')
         .setColor('#00f9ff')
         .setFooter(`하정봇`)
         .setTimestamp()
