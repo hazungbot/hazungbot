@@ -72,9 +72,9 @@ client.on('message', (message) => {
   if(message.content == '!하정봇') {
     let img = 'https://cdn.discordapp.com/attachments/727157966855471234/727358568793374730/7b60da1b4cc7a645.jpg';
     let embed = new Discord.RichEmbed()
-      .setTitle('카톡방')
-      .setURL('https://open.kakao.com/o/g9wiQj1')
-      .setAuthor('하정봇', img, 'http://www.naver.com')
+      .setTitle('오류문의')
+      .setURL('discord.gg/s5bRVrD')
+      .setAuthor('하정봇', img, 'discord.gg/s5bRVrD')
       .setColor('#dfde56')
       .setThumbnail(img)
       .addBlankField()
