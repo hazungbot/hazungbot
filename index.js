@@ -85,7 +85,7 @@ client.on('message', (message) => {
       {name: '!하정봇', desc: '하정봇의 정보가 나옵니다'},
       {name: '!봇상태', desc: '봇 상태를 알려줍니다'},
       {name: '관지라', desc: '명령어'},
-      {name: '!공지', desc: 'dm으로 전체 공지 발송'},
+      {name: '!디엠', desc: 'dm으로 전체 공지 발송'},
       {name: '!청소', desc: '채팅방을 청소합니다'},
     ];
     let commandStr = '';
@@ -127,10 +127,10 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!공지')) {
+  } else if(message.content.startsWith('!디엠')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!공지'.length);
+      let contents = message.content.slice('!디엠'.length);
       let embed = new Discord.RichEmbed()
         .setAuthor('전체dm 공지')
         .setColor('#00f9ff')
@@ -148,7 +148,7 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요');
     }
-  } else if(message.content.startsWith('!일반공지')) {
+  } else if(message.content.startsWith('!디엠공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
       let contents = message.content.slice('!일반공지'.length);
