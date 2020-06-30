@@ -10,7 +10,7 @@ const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!도움말을 치시면 명령어가 나옵니다.' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!도움말.' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -75,16 +75,17 @@ client.on('message', (message) => {
       .setTitle('카톡방')
       .setURL('https://open.kakao.com/o/g9wiQj1')
       .setAuthor('하정봇', img, 'http://www.naver.com')
+      .setColor('#dfde56')
       .setThumbnail(img)
       .addBlankField()
-      .addField('Inline field title', 'Some value here')
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here', true)
-      .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
+      .addField('봇 주인', '민슬아#7938')
+      .addField('봇 이름', '하정봇#7946', true)
+      .addField('타이틀', '추가예정', true)
+      .addField('타이틀', '추가예정', true)
+      .addField('타이틀', '추가예정\n추가예정\n추가예정\n')
       .addBlankField()
       .setTimestamp()
-      .setFooter('나긋해가 만듬', img)
+      .setFooter('made by 민슬아', img)
 
     message.channel.send(embed)
   } else if(message.content == '!도움말') {
@@ -110,7 +111,7 @@ client.on('message', (message) => {
     embed.addField('Commands: ', commandStr);
 
     message.channel.send(embed)
-  } else if(message.content == '!초대코드2') {
+  } else if(message.content == '!초대코드100') {
     client.guilds.array().forEach(x => {
       x.channels.find(x => x.type == 'text').createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
         .then(invite => {
@@ -122,7 +123,7 @@ client.on('message', (message) => {
           }
         })
     });
-  } else if(message.content == '!초대코드') {
+  } else if(message.content == '!초대코드10') {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
@@ -203,7 +204,7 @@ client.on('message', (message) => {
     } else {
       message.channel.bulkDelete(parseInt(clearLine)+1)
         .then(() => {
-          AutoMsgDelete(message, `<@${message.author.id}> ` + parseInt(clearLine) + "개의 메시지를 삭제했습니다. (이 메세지는 잠시 후에 사라집니다.)");
+          AutoMsgDelete(message, `<@${message.author.id}> ` + parseInt(clearLine) + "개 채팅 삭제 완료!");
         })
         .catch(console.error)
     }
