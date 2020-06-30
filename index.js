@@ -151,7 +151,7 @@ client.on('message', (message) => {
   } else if(message.content.startsWith('!디엠공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!일반공지'.length);
+      let contents = message.content.slice('!디엠공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`${contents}`);
@@ -161,14 +161,14 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요');
     }
-  } else if(message.content.startsWith('!삭제')) {
+  } else if(message.content.startsWith('!청소')) {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
     
     if(message.channel.type != 'dm' && checkPermission(message)) return
 
-    var clearLine = message.content.slice('!삭제 '.length);
+    var clearLine = message.content.slice('!청소 '.length);
     var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
