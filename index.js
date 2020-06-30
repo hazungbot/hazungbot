@@ -73,8 +73,8 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/attachments/727157966855471234/727358568793374730/7b60da1b4cc7a645.jpg';
     let embed = new Discord.RichEmbed()
       .setTitle('오류문의')
-      .setURL('discord.gg/s5bRVrD')
-      .setAuthor('하정봇', img, 'discord.gg/s5bRVrD')
+      .setURL('https://discord.com/invite/s5bRVrD')
+      .setAuthor('하정봇', img, 'https://discord.com/invite/s5bRVrD')
       .setColor('#dfde56')
       .setThumbnail(img)
       .addBlankField()
