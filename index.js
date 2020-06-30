@@ -10,7 +10,7 @@ const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!도움말.' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!도움말' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -34,8 +34,8 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == '!초대코드') {
-    return message.reply('https://discord.gg/Z3samZe');
+  if(message.content == '하정봇안녕') {
+    return message.reply('안녕');
   }
 
   if(message.content == '!봇상태') {
@@ -91,7 +91,8 @@ client.on('message', (message) => {
   } else if(message.content == '!도움말') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
-      {name: '!초대코드', desc: '디스코드 영구 초대코드가 나옵니다'},
+      {name: '하정봇안녕', desc: '하정봇이 인사합니다'},
+      {name: '!초대코드', desc: '디스코드 주소가 나옵니다'},
       {name: '!하정봇', desc: '하정봇의 정보가 나옵니다'},
       {name: '!봇상태', desc: '봇 상태를 알려줍니다'},
       {name: '관지라', desc: '명령어'},
@@ -124,7 +125,7 @@ client.on('message', (message) => {
           }
         })
     });
-  } else if(message.content == '!초대코드10') {
+  } else if(message.content == '!초대코드') {
     if(message.channel.type == 'dm') {
       return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
     }
@@ -154,9 +155,9 @@ client.on('message', (message) => {
         x.user.send(embed)
       });
   
-      return message.reply('공지를 전송했습니다.');
+      return message.reply('공지를 전송완료');
     } else {
-      return message.reply('채널에서 실행해주세요.');
+      return message.reply('채널에서 실행해주세요');
     }
   } else if(message.content.startsWith('!일반공지')) {
     if(checkPermission(message)) return
@@ -167,9 +168,9 @@ client.on('message', (message) => {
         x.user.send(`${contents}`);
       });
   
-      return message.reply('공지를 전송했습니다.');
+      return message.reply('공지를 전송완료');
     } else {
-      return message.reply('채널에서 실행해주세요.');
+      return message.reply('채널에서 실행해주세요');
     }
   } else if(message.content.startsWith('!청소')) {
     if(message.channel.type == 'dm') {
