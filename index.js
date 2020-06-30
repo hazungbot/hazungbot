@@ -48,7 +48,7 @@ client.on('message', (message) => {
     embed.addBlankField()
     embed.addField('RAM 사용량',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
     embed.addField('업타임', `${duration}`, true);
-    embed.addField('현재인원',         `${client.users.size.toLocaleString()}`, true);
+    embed.addField('하정봇사용자',         `${client.users.size.toLocaleString()}`, true);
     embed.addField('서버수',       `${client.guilds.size.toLocaleString()}`, true);
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
     embed.addField('Discord.js',   `v${Discord.version}`, true);
