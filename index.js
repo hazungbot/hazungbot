@@ -93,9 +93,10 @@ client.on('message', (message) => {
     let commandList = [
       {name: '!초대코드', desc: '디스코드 영구 초대코드가 나옵니다'},
       {name: '!하정봇', desc: '하정봇의 정보가 나옵니다'},
-      {name: '!전체공지2', desc: 'dm으로 전체 공지 발송'},
-      {name: '!청소', desc: '채팅방을 청소합니다'},
       {name: '!봇상태', desc: '봇 상태를 알려줍니다'},
+      {name: '관지라', desc: '명령어'},
+      {name: '!공지', desc: 'dm으로 전체 공지 발송'},
+      {name: '!청소', desc: '채팅방을 청소합니다'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
