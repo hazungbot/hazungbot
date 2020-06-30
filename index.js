@@ -53,8 +53,6 @@ client.on('message', (message) => {
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
     embed.addField('Discord.js',   `v${Discord.version}`, true);
     embed.addField('Node',         `${process.version}`, true);
-    
-    let arr = client.guilds.array();
   }
 
   if(message.content == '!하정봇') {
