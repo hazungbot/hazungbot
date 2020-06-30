@@ -10,7 +10,7 @@ const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '!help를 쳐보세요.' }, status: 'online' })
+  client.user.setPresence({ game: { name: '!도움말을 치시면 명령어가 나옵니다.' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -34,22 +34,22 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == 'ping') {
-    return message.reply('pong');
+  if(message.content == '!초대코드') {
+    return message.reply('https://discord.gg/Z3samZe');
   }
 
   if(message.content == '!si') {
     let embed = new Discord.RichEmbed()
-    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+    let img = 'https://cdn.discordapp.com/attachments/727157966855471234/727358568793374730/7b60da1b4cc7a645.jpg';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
-    embed.setAuthor('server info of 콜라곰 BOT', img)
-    embed.setFooter(`콜라곰 BOT ❤️`)
+    embed.setAuthor('현재 서버의 정보 by 하정봇', img)
+    embed.setFooter(`하정봇`)
     embed.addBlankField()
-    embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
-    embed.addField('running time', `${duration}`, true);
-    embed.addField('user',         `${client.users.size.toLocaleString()}`, true);
-    embed.addField('server',       `${client.guilds.size.toLocaleString()}`, true);
+    embed.addField('RAM 사용량',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
+    embed.addField('업타임', `${duration}`, true);
+    embed.addField('현재인원',         `${client.users.size.toLocaleString()}`, true);
+    embed.addField('하정봇을 사용중인 서버',       `${client.guilds.size.toLocaleString()}`, true);
     // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
     embed.addField('Discord.js',   `v${Discord.version}`, true);
     embed.addField('Node',         `${process.version}`, true);
@@ -87,23 +87,19 @@ client.on('message', (message) => {
       .setFooter('나긋해가 만듬', img)
 
     message.channel.send(embed)
-  } else if(message.content == '!help') {
+  } else if(message.content == '!도움말') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
-      {name: '!help', desc: 'help'},
-      {name: 'ping', desc: '현재 핑 상태'},
-      {name: 'embed', desc: 'embed 예제1'},
-      {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
-      {name: '!전체공지2', desc: 'dm으로 전체 embed 형식으로 공지 보내기'},
-      {name: '!청소', desc: '텍스트 지움'},
-      {name: '!초대코드', desc: '해당 채널의 초대 코드 표기'},
-      {name: '!초대코드2', desc: '봇이 들어가있는 모든 채널의 초대 코드 표기'},
+      {name: '!초대코드', desc: '디스코드 영구 초대코드가 나옵니다'},
+      {name: '!하정봇', desc: '하정봇의 정보가 나옵니다'},
+      {name: '!전체공지2', desc: 'dm으로 전체 공지 발송'},
+      {name: '!청소', desc: '채팅방을 청소합니다'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setAuthor('Help of 콜라곰 BOT', helpImg)
+      .setAuthor('하정봇 명령어', helpImg)
       .setColor('#186de6')
-      .setFooter(`콜라곰 BOT ❤️`)
+      .setFooter(`하정봇`)
       .setTimestamp()
     
     commandList.forEach(x => {
@@ -138,14 +134,14 @@ client.on('message', (message) => {
           message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
         }
       })
-  } else if(message.content.startsWith('!전체공지2')) {
+  } else if(message.content.startsWith('!공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지2'.length);
+      let contents = message.content.slice('!공지'.length);
       let embed = new Discord.RichEmbed()
-        .setAuthor('공지 of 콜라곰 BOT')
-        .setColor('#186de6')
-        .setFooter(`콜라곰 BOT ❤️`)
+        .setAuthor('공지 of 하정봇')
+        .setColor('#00f9ff')
+        .setFooter(`하정봇`)
         .setTimestamp()
   
       embed.addField('공지: ', contents);
@@ -159,13 +155,13 @@ client.on('message', (message) => {
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
-  } else if(message.content.startsWith('!전체공지')) {
+  } else if(message.content.startsWith('!일반공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('!일반공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
-        x.user.send(`<@${message.author.id}> ${contents}`);
+        x.user.send(`${contents}`);
       });
   
       return message.reply('공지를 전송했습니다.');
